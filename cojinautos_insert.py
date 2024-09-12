@@ -20,7 +20,6 @@ def insert_data_cojinautos(df, table_name='clientes_servicios'):
             st.success("Connected to the database successfully.")
             cursor = connection.cursor()
             
-            # Query de inserción
             insert_query = f"""
             INSERT INTO {table_name} (IDCustomer, CustomerName, Phone, Email, Address, RegistrationDate, IDService, TypeOfService, DateOfService, MaterialUsed, Cost, ResponsibleEmployee)
             VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
@@ -28,10 +27,8 @@ def insert_data_cojinautos(df, table_name='clientes_servicios'):
 
             df_data = df[['IDCustomer', 'CustomerName', 'Phone', 'Email', 'Address', 'RegistrationDate', 'IDService', 'TypeOfService', 'DateOfService', 'MaterialUsed', 'Cost', 'ResponsibleEmployee']].to_records(index=False).tolist()
 
-            # Ejecutar la consulta en modo de inserción masiva
             cursor.executemany(insert_query, df_data)
 
-            # Confirmar la transacción
             connection.commit()
 
             st.success(f"{cursor.rowcount} rows inserted successfully into Clientes_Servicios.")

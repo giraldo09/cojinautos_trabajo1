@@ -5,7 +5,7 @@ bash
     python -m venv venv
     .\venv\Scripts\Activate
 
-## Activar permisos para inicia el entorno, solo sino lo 
+## Activar permisos para inicia el entorno 
 ´´´bash
     Set-ExecutionPolicy RemoteSigned
     Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
